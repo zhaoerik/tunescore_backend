@@ -104,7 +104,7 @@ butterfly_tracks
 def kod_tracks
     i = 0
     while i < 12
-        Track.find_or_create_by(name: $jcole.albums.fourth.tracks[i].name, popularity: $jcole.albums.fourth.tracks[i].popularity, explicit: $jcole.albums.fourth.tracks[i].explicit, artist: $j_cole, album: $kod)
+        Track.find_or_create_by(name: $jcole.albums.fifth.tracks[i].name, popularity: $jcole.albums.fifth.tracks[i].popularity, explicit: $jcole.albums.fifth.tracks[i].explicit, artist: $j_cole, album: $kod)
         i += 1
     end
 end
@@ -122,7 +122,7 @@ kamikaze_tracks
 def igor_tracks
     i = 0
     while i < 12
-        Track.find_or_create_by(name: $tyler.albums.fourth.tracks[i].name, popularity: $tyler.albums.fourth.tracks[i].popularity, explicit: $tyler.albums.fourth.tracks[i].explicit, artist: $tyler_artist, album: $igor)
+        Track.find_or_create_by(name: $tyler.albums.first.tracks[i].name, popularity: $tyler.albums.first.tracks[i].popularity, explicit: $tyler.albums.first.tracks[i].explicit, artist: $tyler_artist, album: $igor)
         i += 1
     end
 end
@@ -229,10 +229,20 @@ throne_tracks
 
 # USER SEEDS
 def user_seeds
-    i = 0
-    10.times do
-        $user_array.push(User.create!(username: "username#{i}", password: "1234", name: Faker::Name.name, email: Faker::Internet.email, image: "https://cdn.pixabay.com/photo/2017/06/13/12/53/profile-2398782_1280.png"))
-        i += 1
+    m = 1
+    a = 4
+    n = 7
+    3.times do
+        $user_array.push(User.create!(username: "username#{m}", password: "1234", name: Faker::Name.name, email: Faker::Internet.email, image: "https://cdn.pixabay.com/photo/2017/06/13/12/53/profile-2398782_1280.png", badge: "Master"))
+        m += 1
+    end
+    3.times do
+        $user_array.push(User.create!(username: "username#{a}", password: "1234", name: Faker::Name.name, email: Faker::Internet.email, image: "https://cdn.pixabay.com/photo/2017/06/13/12/53/profile-2398782_1280.png", badge: "Advanced"))
+        a += 1
+    end
+    4.times do
+        $user_array.push(User.create!(username: "username#{n}", password: "1234", name: Faker::Name.name, email: Faker::Internet.email, image: "https://cdn.pixabay.com/photo/2017/06/13/12/53/profile-2398782_1280.png", badge: "Novice"))    
+        n += 1
     end
 end
 user_seeds
@@ -243,7 +253,6 @@ def review_seeds
     u = 0
     while u < 10
         $album_array.each do |a|
-            # byebug
             Review.create!(description: Faker::Lorem.paragraphs(number: 5), rating: Faker::Number.between(from: 1, to: 100), album: a, user: $user_array[u])
         end
         u += 1

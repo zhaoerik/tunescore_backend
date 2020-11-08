@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_27_220046) do
+ActiveRecord::Schema.define(version: 2020_10_27_030036) do
 
   create_table "albums", force: :cascade do |t|
     t.string "name"
@@ -28,34 +28,6 @@ ActiveRecord::Schema.define(version: 2020_10_27_220046) do
     t.string "image"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "games", force: :cascade do |t|
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "high_scores", force: :cascade do |t|
-    t.string "score"
-    t.string "badge"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "lyric_answers", force: :cascade do |t|
-    t.string "lyric"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "lyric_questions", force: :cascade do |t|
-    t.string "question"
-    t.integer "game_id", null: false
-    t.integer "lyrics_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["game_id"], name: "index_lyric_questions_on_game_id"
-    t.index ["lyrics_id"], name: "index_lyric_questions_on_lyrics_id"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -87,12 +59,11 @@ ActiveRecord::Schema.define(version: 2020_10_27_220046) do
     t.string "name"
     t.string "email"
     t.string "image"
+    t.string "badge"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "lyric_questions", "games"
-  add_foreign_key "lyric_questions", "lyrics", column: "lyrics_id"
   add_foreign_key "reviews", "albums"
   add_foreign_key "reviews", "users"
   add_foreign_key "tracks", "albums"
