@@ -63,8 +63,6 @@ $starboy= Album.find_or_create_by(name: $weeknd.albums[6].name, popularity: $wee
 
 $more_life = Album.find_or_create_by(name: $drake.albums[7].name, popularity: $drake.albums[7].popularity, image: $drake.albums[7].images[0]["url"], release_date: $drake.albums[7].release_date)
 
-$dark_sky = Album.find_or_create_by(name: $bigsean.albums[7].name, popularity: $bigsean.albums[7].popularity, image: $bigsean.albums[7].images[0]["url"], release_date: $bigsean.albums[7].release_date)
-
 $bentleys = Album.find_or_create_by(name: $postmalone.albums.third.name, popularity: $postmalone.albums.third.popularity, image: $postmalone.albums.third.images[0]["url"], release_date: $postmalone.albums.third.release_date)
 
 $daytona = Album.find_or_create_by(name: $pusha.albums.first.name, popularity: $pusha.albums.first.popularity, image: $pusha.albums.first.images[0]["url"], release_date: $pusha.albums.first.release_date)
@@ -77,9 +75,11 @@ $free_spirit = Album.find_or_create_by(name: $khalid.albums.first.name, populari
 
 $testing = Album.find_or_create_by(name: $rocky.albums.first.name, popularity: $rocky.albums.first.popularity, image: $rocky.albums.first.images[0]["url"], release_date: $rocky.albums.first.release_date)
 
-$throne = Album.find_or_create_by(name: $jayz.albums[7].name, popularity: $jayz.albums[7].popularity, image: $jayz.albums[7].images[0]["url"], release_date: $jayz.albums[7].release_date)
+$throne = Album.find_or_create_by(name: $jayz.albums[1].name, popularity: $jayz.albums[1].popularity, image: $jayz.albums[1].images[0]["url"], release_date: $jayz.albums[1].release_date)
 
-$album_array = [$tlop, $butterfly, $kod, $kamikaze, $igor, $astro, $starboy, $more_life, $dark_sky, $bentleys, $daytona, $coloring_book, $blonde, $free_spirit, $testing, $throne]
+$decided = Album.find_or_create_by(name: $bigsean.albums[5].name, popularity: $bigsean.albums[5].popularity, image: $bigsean.albums[5].images[0]["url"], release_date: $bigsean.albums[5].release_date)
+
+$album_array = [$tlop, $butterfly, $kod, $kamikaze, $igor, $astro, $starboy, $more_life, $bentleys, $daytona, $coloring_book, $blonde, $free_spirit, $testing, $throne, $decided]
 
 # TRACK SEEDS
 
@@ -155,14 +155,14 @@ def more_life_tracks
 end
 more_life_tracks
 
-def dark_sky_tracks
+def decided_tracks
     i = 0
-    while i < 12
-        Track.find_or_create_by(name: $bigsean.albums[7].tracks[i].name, popularity: $bigsean.albums[7].tracks[i].popularity, explicit: $bigsean.albums[7].tracks[i].explicit, artist: $big_sean, album: $dark_sky)
+    while i < 13
+        Track.find_or_create_by(name: $bigsean.albums[5].tracks[i].name, popularity: $bigsean.albums[5].tracks[i].popularity, explicit: $bigsean.albums[5].tracks[i].explicit, artist: $big_sean, album: $decided)
         i += 1
     end
 end
-dark_sky_tracks
+decided_tracks
 
 def bentleys_tracks
     i = 0
@@ -220,8 +220,8 @@ testing_tracks
 
 def throne_tracks
     i = 0
-    while i < 16
-        Track.find_or_create_by(name: $jayz.albums[7].tracks[i].name, popularity: $jayz.albums[7].tracks[i].popularity, explicit: $jayz.albums[7].tracks[i].explicit, artist: $jay_z, album: $throne)
+    while i < 9
+        Track.find_or_create_by(name: $jayz.albums[1].tracks[i].name, popularity: $jayz.albums[1].tracks[i].popularity, explicit: $jayz.albums[1].tracks[i].explicit, artist: $jay_z, album: $throne)
         i += 1
     end
 end
